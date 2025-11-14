@@ -2,7 +2,7 @@ package payment;
 
 import bankingEntity.*;
 
-public class PayPalPayment {
+public class PayPalPayment implements PaymentMethod {
     private String email;
     private String password;
 
@@ -12,10 +12,12 @@ public class PayPalPayment {
     }
 
 
+    @Override
     public void pay(double amount) {
         System.out.println("Bezahlung von " + amount + " mit PayPal erfolgreich.");
     }
 
+    @Override
     public boolean validate(Bank bank) {
         return bank.validatePayPal(email, password);
     }

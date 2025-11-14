@@ -2,7 +2,7 @@ package payment;
 
 import bankingEntity.*;
 
-public class CreditCardPayment {
+public class CreditCardPayment implements PaymentMethod {
     private String cardNumber;
     private String cardHolderName;
     private String expiryDate;
@@ -15,10 +15,12 @@ public class CreditCardPayment {
         this.cvv = cvv;
     }
 
+    @Override
     public void pay(double amount) {
         System.out.println("Bezahlung von " + amount + " mit Kreditkarte erfolgreich.");
     }
 
+    @Override
     public boolean validate(Bank bank) {
         return bank.validateCreditCard(cardNumber, cvv);
     }
